@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "./App.css";
 import Login from "./components/Login"
+import Header from "./components/Header"
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
+      <Header />
       <RouterProvider router={router} />
     </div>
   )

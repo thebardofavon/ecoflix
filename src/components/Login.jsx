@@ -5,12 +5,12 @@ const Login = (props) => {
         <Container>
             <Content>
                 <LoginContent>
-                    <CTALogoOne src="/images/cta-logo-one.svg" alt="a logo"/>
+                    <CTALogoOne src="/images/cta-logo-one.svg" alt="a-logo"/>
                     <SignUp>SIGN UP TO WATCH!</SignUp>
                     <Description>
-                        This is a sample UI for a streaming platform made by Anushka using ReactJS.
+                        This is a sample UI clone for a streaming platform made by Anushka using ReactJS.
                     </Description>
-                    <CTALogoTwo SRC="/images/cta-logo-two.png" alt="another logo"/>
+                    <CTALogoTwo src="/images/cta-logo-two.png" alt="another-logo"/>
                 </LoginContent>
                 <BgImage />
             </Content>
@@ -53,6 +53,7 @@ const BgImage = styled.div`
 `
 
 const LoginContent = styled.div`
+    position: fixed;
     background-color: #000;
     max-width: 700px;
     width: 100%;
@@ -101,7 +102,7 @@ const Description = styled.p`
 `
 
 const CTALogoTwo = styled.img`
-  max-width: 600px;
+  max-width: 550px;
   margin-bottom: 30px;
   display: inline-block;
   vertical-align: bottom;
