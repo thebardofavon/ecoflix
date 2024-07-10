@@ -5,10 +5,12 @@ const Login = (props) => {
         <Container>
             <Content>
                 <LoginContent>
-                    <CTA>
-                        <CTALogoOne src="/images/cta-logo-one.svg" alt=""/>
-                    </CTA>
+                    <CTALogoOne src="/images/cta-logo-one.svg" alt="a logo"/>
                     <SignUp>SIGN UP TO WATCH!</SignUp>
+                    <Description>
+                        This is a sample UI for a streaming platform made by Anushka using ReactJS.
+                    </Description>
+                    <CTALogoTwo SRC="/images/cta-logo-two.png" alt="another logo"/>
                 </LoginContent>
                 <BgImage />
             </Content>
@@ -40,7 +42,6 @@ const Content = styled.div`
 const BgImage = styled.div`
     height: 100%;
     background-image: url("/images/white-wall.jpg");
-    // background-image: url("/images/login-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -58,23 +59,18 @@ const LoginContent = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-`
-
-const CTA = styled.div`
-    padding-top: 13px;
-    max-width: 650px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    
 `
 
 const CTALogoOne = styled.img`
+    margin-top: 30px;
     width: 100%;
     margin-bottom: 12px;
     max-width: 600px;
     min-height: 1px;
     display: block;
     margin-left: auto;
+    margin-right: auto;
 `
 
 const SignUp = styled.a`
@@ -82,7 +78,7 @@ const SignUp = styled.a`
   color: #f9f9f9;
   background-color: #098443;
   margin-bottom: 12px;
-  width: 80%;
+  width: 90%;
   letter-spacing: 1.5px;
   font-size: 18px;
   padding: 16.5px 0;
@@ -94,6 +90,24 @@ const SignUp = styled.a`
   &:hover {
     background-color: #19b756;
   }
+`;
+
+const Description = styled.p`
+    color: hsla(0, 0%, 95.3%, 1);
+    font-size: 14px;
+    margin: 0 0 24px;
+    letter-spacing: 0.8px;
+    margin: 0 0 24px;
+`
+
+const CTALogoTwo = styled.img`
+  max-width: 600px;
+  margin-bottom: 30px;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 `;
 
 export default Login
