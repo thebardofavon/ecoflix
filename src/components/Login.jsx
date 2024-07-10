@@ -63,7 +63,7 @@ const LoginContent = styled.div`
 `
 
 const CTALogoOne = styled.img`
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
     margin-bottom: 12px;
     max-width: 600px;
