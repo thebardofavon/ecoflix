@@ -1,17 +1,16 @@
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
-const Header = (props) => {
-
+const Header = () => {
     const handleAuth = () => {
-        auth
-        .signInWithPopup(provider)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            alert(error.message);
-        })
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
     }
 
     return (
