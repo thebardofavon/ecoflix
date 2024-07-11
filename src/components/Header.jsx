@@ -1,12 +1,38 @@
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate }  from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
+import {
+    selectUserName,
+    selectUserPhoto,
+    setUserLoginDetails,
+    // setSignOutState,
+ }  from "../features/user/userSlice";
 
+ 
 const Header = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const username = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
+
+    const setUser = (user) => {
+        dispatch(
+                setUserLoginDetails({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+            })
+        );
+    };
+
     const handleAuth = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {
+            .then((result) => { 
                 console.log(result);
+                setUser(result.user);
             })
             .catch((error) => {
                 alert(error.message);
@@ -18,33 +44,40 @@ const Header = () => {
             <Logo>
                 <img src="/images/ecoflix-logo-1.png" alt="ecoflix" />
             </Logo>
-            <NavMenu>
-                <a href="/home">
-                    <img src="/images/home-icon.svg"alt="home"/>
-                    <span>HOME</span>
-                </a>
-                <a>
-                    <img src="/images/search-icon.svg" alt="SEARCH" />
-                    <span>SEARCH</span>
-                </a>
-                <a>
-                    <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-                    <span>WATCHLIST</span>
-                </a>
-                <a>
-                    <img src="/images/original-icon.svg" alt="ORIGINALS" />
-                    <span>ORIGINALS</span>
-                </a>
-                <a>
-                    <img src="/images/movie-icon.svg" alt="MOVIES" />
-                    <span>MOVIES</span>
-                </a>
-                <a>
-                    <img src="/images/series-icon.svg" alt="SERIES" />
-                    <span>SERIES</span>
-                </a>
-            </NavMenu>
-            <Login onClick={handleAuth}>LOGIN</Login>
+
+            { !username ? (
+                <Login onClick={handleAuth}>LOGIN</Login>
+            ) : (
+                <>
+                    <NavMenu>
+                        <a href="/home">
+                            <img src="/images/home-icon.svg"alt="home"/>
+                            <span>HOME</span>
+                        </a>
+                        <a>
+                            <img src="/images/search-icon.svg" alt="SEARCH" />
+                            <span>SEARCH</span>
+                        </a>
+                        <a>
+                            <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+                            <span>WATCHLIST</span>
+                        </a>
+                        <a>
+                            <img src="/images/original-icon.svg" alt="ORIGINALS" />
+                            <span>ORIGINALS</span>
+                        </a>
+                        <a>
+                            <img src="/images/movie-icon.svg" alt="MOVIES" />
+                            <span>MOVIES</span>
+                        </a>
+                        <a>
+                            <img src="/images/series-icon.svg" alt="SERIES" />
+                            <span>SERIES</span>
+                        </a>
+                    </NavMenu>
+                </>
+            )
+        }            
         </Nav>
     )
 }
