@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate }  from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import {
@@ -14,7 +14,7 @@ import {
 const Header = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const history = useHistory();
     const username = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
