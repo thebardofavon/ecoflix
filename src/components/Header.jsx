@@ -1,6 +1,19 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { auth, provider } from "../firebase";
 
 const Header = (props) => {
+
+    const handleAuth = () => {
+        auth
+        .signInWithPopup(provider)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            alert(error.message);
+        })
+    }
+
     return (
         <Nav>
             <Logo>
@@ -32,6 +45,7 @@ const Header = (props) => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
+            <Login onClick={handleAuth()}>LOGIN</Login>
         </Nav>
     )
 }
@@ -74,7 +88,7 @@ const NavMenu = styled.div`
     position: relative;
     margin-right: auto;
     margin-left: 25px;
-    letter-spacing: 0.01rem;
+    letter-spacing: 0.8px;
 
     a {
         display: flex;
@@ -90,7 +104,7 @@ const NavMenu = styled.div`
 
         span {
             color: rgb(249, 249, 249);
-            font-size: 16px;
+            font-size: 14px;
             padding: 2px 2px;
             white-space: nowrap;
             position: relative;
@@ -126,5 +140,20 @@ const NavMenu = styled.div`
     }
 }
 `
+
+const Login = styled.a`
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  letter-spacing: 0.8px;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  transition: all 0.2s ease 0s;
+
+  &:hover {
+    background-color: #f9f9f9;
+    color: #000;
+    border-color: transparent;
+  }
+`;
 
 export default Header
