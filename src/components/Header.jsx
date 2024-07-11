@@ -44,7 +44,7 @@ const Header = () => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <Login onClick={handleAuth()}>LOGIN</Login>
+            <Login onClick={handleAuth}>LOGIN</Login>
         </Nav>
     )
 }
@@ -93,6 +93,7 @@ const NavMenu = styled.div`
         display: flex;
         align-items: center;
         padding: 0 12px;
+        cursor: pointer;
 
         img {
             height: 20px;
@@ -131,6 +132,7 @@ const NavMenu = styled.div`
             transform: scaleX(1);
             visibility: visible;
             opacity: 1 !important;
+            cursor: pointer;
         }    
     }
 
@@ -152,6 +154,7 @@ const Login = styled.a`
     background-color: #f9f9f9;
     color: #000;
     border-color: transparent;
+    cursor: pointer;
   }
 `;
 
