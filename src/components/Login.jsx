@@ -25,6 +25,7 @@ const Container = styled.section`
     text-align: center;
     height: 100vh;
 `
+
 const Content = styled.div`
     margin-bottom: 100vw;
     width: 100%;
