@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import {
-    selectUserName,
+    selectuserName,
     selectUserPhoto,
     setUserLoginDetails,
     // setSignOutState,
@@ -14,8 +14,8 @@ import {
 const Header = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
-    const username = useSelector(selectUserName);
+    // const history = useHistory();
+    const userName = useSelector(selectuserName);
     const userPhoto = useSelector(selectUserPhoto);
 
     const setUser = (user) => {
@@ -45,7 +45,7 @@ const Header = () => {
                 <img src="/images/ecoflix-logo-1.png" alt="ecoflix" />
             </Logo>
 
-            { !username ? (
+            { !userName ? (
                 <Login onClick={handleAuth}>LOGIN</Login>
             ) : (
                 <>
@@ -75,6 +75,7 @@ const Header = () => {
                             <span>SERIES</span>
                         </a>
                     </NavMenu>
+                    <UserImg src={userPhoto} alt={userName} />
                 </>
             )
         }            
@@ -189,6 +190,10 @@ const Login = styled.a`
     border-color: transparent;
     cursor: pointer;
   }
+`;
+
+const UserImg = styled.img`
+  height: 100%;
 `;
 
 export default Header
