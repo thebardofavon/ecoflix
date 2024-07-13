@@ -42,11 +42,11 @@ const Content = styled.div`
 
 const BgImage = styled.div`
     height: 100%;
-    background-image: url("/images/white-wall.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+    background: url("/images/white-wall.jpg") center center / cover
+      no-repeat fixed;
+    background-position: bottom;
     position: absolute;
+    opacity: 0.8;
     top: 0;
     right: 0;
     left: 0;

@@ -116,7 +116,7 @@ const Nav = styled.nav`
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    height: 80px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
