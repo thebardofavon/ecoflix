@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import db from "../firebase";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
+import { collection, query, onSnapshot } from "firebase/firestore";
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -20,10 +21,11 @@ const Home = (props) => {
     let trending = [];
 
     useEffect(() => {
-      console.log("hello");
-      db.collection("movies").onSnapshot((snapshot) => {
+      // console.log("hello");
+      const q = query(collection(db, "movies"));
+      onSnapshot(q, (snapshot) => {
         snapshot.docs.map((doc) => {
-          console.log(recommends);
+          // console.log(recommends);
           switch (doc.data().type) {
             case "recommend":
               recommends = [...recommends, { id: doc.id, ...doc.data() }];
@@ -41,16 +43,17 @@ const Home = (props) => {
               trending = [...trending, { id: doc.id, ...doc.data() }];
               break;
           }
-        });
+        
 
-        dispatch(
-          setMovies({
-            recommend: recommends,
-            newDisney: newEcoFlixes,
-            original: originals,
-            trending: trending,
-          })
-        );
+          dispatch(
+            setMovies({
+              recommend: recommends,
+              newEcoFlix: newEcoFlixes,
+              original: originals,
+              trending: trending,
+            })
+          );
+        });
       });
     }, [userName]);
 

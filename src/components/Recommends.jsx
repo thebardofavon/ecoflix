@@ -1,39 +1,27 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectRecommend } from "../features/movie/movieSlice";
 
 const Recommends = (props) => {
+    const movies = useSelector(selectRecommend);
+
     return (
         <Container>
-            <h4>Recommended For You</h4>
-            <Content>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="photo" />
-                    </Link>
+          <h4>Recommended for You</h4>
+          <Content>
+            {movies &&
+              movies.map((movie, key) => (
+                <Wrap key={key}>
+                  {movie.id}
+                  <Link to={`/detail/` + movie.id}>
+                    <img src={movie.cardImg} alt={movie.title} />
+                  </Link>
                 </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="photo" />
-                    </Link>
-                </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="photo" />
-                    </Link>
-                </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="photo" />
-                    </Link>
-                </Wrap>
-
-            </Content>
+              ))}
+          </Content>
         </Container>
-    )
+    );
 };
 
 const Container = styled.div`
