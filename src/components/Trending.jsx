@@ -84,4 +84,4 @@ const Content = styled.div`
 `;
 
 
-export default NewEcoFlix;
+export default Trending;
