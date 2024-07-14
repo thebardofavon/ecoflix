@@ -1,20 +1,44 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import db from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const Detail = (props) => {
+    const { id } = useParams(); 
+    const [detailData, setDetailData] = useState({});
+
+    useEffect(() => {
+        const fetchDetailData = async () => {
+            const docRef = doc(db, "movies", id);
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setDetailData(docSnap.data());
+                } else {
+                    console.log("No such document in Firebase");
+                }
+            } catch (error) {
+                console.log("Error getting document:", error);
+            }
+        };
+
+        fetchDetailData();
+    }, [id]);
+
     return (
         <Container>
-
             <Background>
                 <img 
-                    src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                    alt="" 
+                    src={detailData.backgroundImg}
+                    alt={detailData.title} 
                 />
             </Background>
 
             <ImageTitle>
                 <img 
-                    src="https://plus.unsplash.com/premium_photo-1676637000058-96549206fe71?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                    alt="" 
+                    src={detailData.titleImg}
+                    alt={detailData.title} 
                 /> 
             </ImageTitle>
 
@@ -38,13 +62,8 @@ const Detail = (props) => {
                         </div>
                     </GroupWatch>
                 </Controls>
-
-                <SubTitle>
-                    SubTitle
-                    <Description>
-                        Description
-                    </Description>
-                </SubTitle>
+                <SubTitle>{detailData.subTitle}</SubTitle>
+                <Description>{detailData.description}</Description>
             </ContentMeta>
 
         </Container>
