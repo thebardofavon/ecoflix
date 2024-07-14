@@ -5,7 +5,7 @@ import { selectNewEcoFlix } from "../features/movie/movieSlice";
 
 const NewEcoFlix = (props) => {
     const movies = useSelector(selectNewEcoFlix);
-    console.log("in NewEcoFlix");
+    // console.log("in NewEcoFlix");
 
     return (
         <Container>
