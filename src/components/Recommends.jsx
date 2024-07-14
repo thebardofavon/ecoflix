@@ -39,7 +39,7 @@ const Content = styled.div`
     }
     `;
 
-    const Wrap = styled.div`
+const Wrap = styled.div`
     padding-top: 56.25%;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
