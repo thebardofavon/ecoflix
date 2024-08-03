@@ -97,7 +97,12 @@ const Header = () => {
                             <img src="/images/series-icon.svg" alt="SERIES" />
                             <span>SERIES</span>
                         </a>
+                        <a href="/subscribe">
+                            {/* <img src="/images/series-icon.svg" alt="SERIES" /> */}
+                            <span>SUBSCRIBE</span>
+                        </a>
                     </NavMenu>
+                    
                     <SignOut>
                         <UserImg src={userPhoto} alt={userName} />
                         <DropDown> 

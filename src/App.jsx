@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
+import Subscribe from "./components/Subscribe";
 
 function App() {
   return (
@@ -14,8 +15,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />\
+          <Route path="/home" element={<Home />} />
+          <Route path="/subscribe" element={<Subscribe />} />
           <Route path="/detail/:id" element={<Detail />} />
+          
         </Routes>
       </Router>
     </div>
