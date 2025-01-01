@@ -18,7 +18,7 @@ const Header = () => {
     const navigate = useNavigate();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
-
+    
     const setUser = (user) => {
         dispatch(
                 setUserLoginDetails({
@@ -226,8 +226,11 @@ const Login = styled.a`
 `;
 
 const UserImg = styled.img`
-  height: 100%;
+  height: 40px;  
+  width: 40px;   
+  border-radius: 50%; 
 `;
+
 
 const DropDown = styled.div`
   position: absolute;
